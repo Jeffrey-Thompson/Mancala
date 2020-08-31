@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mancala</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/app.js" defer></script>
+</head>
+<body>
+    <h1>Mancala</h1>
+    <button id = 'game-start'>Start Game</button>
+    <div id = 'player1-alerts'>
+        <h3>Player 1 Current Score: <span id = 'player1-score'>0</span></h3>
+        <h3 class= 'hidden'>Player 1: It's Your Turn!</h3>
+    </div>
+    <section id = 'gameboard'>
+        <div id = 'player1-store' class= 'player-store'></div>
+        <div id="player1-pocket1" class="player-pockets"></div>
+        <div id="player1-pocket2" class="player-pockets"></div>
+        <div id="player1-pocket3" class="player-pockets"></div>
+        <div id="player1-pocket4" class="player-pockets"></div>
+        <div id="player1-pocket5" class="player-pockets"></div>
+        <div id="player1-pocket6" class="player-pockets"></div>
+        <div id="player2-pocket1" class="player-pockets"></div>
+        <div id="player2-pocket2" class="player-pockets"></div>
+        <div id="player2-pocket3" class="player-pockets"></div>
+        <div id="player2-pocket4" class="player-pockets"></div>
+        <div id="player2-pocket5" class="player-pockets"></div>
+        <div id="player2-pocket6" class="player-pockets"></div>
+        <div id = 'player2-store' class = 'player-store'></div>
+    </section>
+    <div id = 'player2-alerts'>
+        <h3>Player 2 Current Score: <span id = 'player2-score'>0</span></h3>
+        <h3 class= 'hidden'>Player 2: It's Your Turn!</h3>
+    </div>
+    <section id = 'rules'>
+        <h3>The Objective:</h3>
+        <p>Get more stones into your store than your opponent.</p>
+        <h3>The Rules:</h3>
+        <p>Players take turns picking up stones from their pockets and dropping them one at a time counter-clockwise around the board, including your store. Do not drop one of your stones into your opponent's store. If your last stone lands in your store, take another turn. If your last stone in one of your empty pockets, place this stone and any of your opponent's stones directly across from it into your store. The game ends when all of one player's pockets are empty.</p>
+    </section>
+</body>
+</html>
