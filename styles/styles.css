@@ -1,0 +1,25 @@
+.player-pockets {
+    height: 300px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 20%;
+}
+
+.player-store {
+    height: 700px;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 20%;
+}
+
+#gameboard {
+    display: flex;
+    flex-direction: row;
+    border: 5px solid black;
+}
+
+#player-pocket-area {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2fr);
+}
