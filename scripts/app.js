@@ -18,7 +18,10 @@ const player1Pocket1 = {
     numStones: 0,
     stones: [],
     fromStore: 1,
-    $location: $('#player1-pocket1')
+    //DOM location
+    $location: $('#player1-pocket1'),
+    //DOM location for opposite side of board
+    $across: $('#player2-pocket6')
 };
 
 const player1Pocket2 = {
@@ -27,8 +30,8 @@ const player1Pocket2 = {
     numStones: 0,
     stones: [],
     fromStore: 2,
-    //DOM location
-    $location: $('#player1-pocket2')
+    $location: $('#player1-pocket2'),
+    $across: $('#player2-pocket5')
 };
 
 const player1Pocket3 = {
@@ -37,7 +40,8 @@ const player1Pocket3 = {
     numStones: 0,
     stones: [],
     fromStore: 3,
-    $location: $('#player1-pocket3')
+    $location: $('#player1-pocket3'),
+    $across: $('#player2-pocket4')
 };
 
 const player1Pocket4 = {
@@ -46,7 +50,8 @@ const player1Pocket4 = {
     numStones: 0,
     stones: [],
     fromStore: 4,
-    $location: $('#player1-pocket4')
+    $location: $('#player1-pocket4'),
+    $across: $('#player2-pocket3')
 };
 
 const player1Pocket5 = {
@@ -55,7 +60,8 @@ const player1Pocket5 = {
     numStones: 0,
     stones: [],
     fromStore: 5,
-    $location: $('#player1-pocket5')
+    $location: $('#player1-pocket5'),
+    $across: $('#player2-pocket2')
 };
 
 const player1Pocket6 = {
@@ -64,7 +70,8 @@ const player1Pocket6 = {
     numStones: 0,
     stones: [],
     fromStore: 6,
-    $location: $('#player1-pocket6')
+    $location: $('#player1-pocket6'),
+    $across: $('#player2-pocket1')
 };
 
 const player2Pocket1 = {
