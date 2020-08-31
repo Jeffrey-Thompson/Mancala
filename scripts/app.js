@@ -167,7 +167,6 @@ class Factory {
                     console.log(currentTarget);
                     newStone.idNum = `${player}${pocket}${stone}`;
                     newStone.$location = $(`#player${player}-pocket${pocket}`);
-                    $li.css('background', `${newStone.color}`);
                     pockets[currentTarget].stones.push(newStone);
                     pockets[currentTarget].numStones++;
                     $ul.append($li);
