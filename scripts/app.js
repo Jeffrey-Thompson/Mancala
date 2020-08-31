@@ -13,7 +13,7 @@ const playerTwo = {
 };
 
 const pockets = {
-    player1Pocket1 = {
+    player1Pocket1: {
         name: 'player1Pocket1',
         owner: playerOne,
         numStones: 0,
@@ -25,7 +25,7 @@ const pockets = {
         $across: $('#player2-pocket6')
     },
 
-    player1Pocket2 = {
+    player1Pocket2: {
         name: 'player1Pocket2',
         owner: playerOne,
         numStones: 0,
@@ -35,7 +35,7 @@ const pockets = {
         $across: $('#player2-pocket5')
     },
 
-    player1Pocket3 = {
+    player1Pocket3: {
         name: 'player1Pocket3',
         owner: playerOne,
         numStones: 0,
@@ -45,7 +45,7 @@ const pockets = {
         $across: $('#player2-pocket4')
     },
 
-    player1Pocket4 = {
+    player1Pocket4: {
         name: 'player1Pocket4',
         owner: playerOne,
         numStones: 0,
@@ -55,7 +55,7 @@ const pockets = {
         $across: $('#player2-pocket3')
     },
 
-    player1Pocket5 = {
+    player1Pocket5: {
         name: 'player1Pocket5',
         owner: playerOne,
         numStones: 0,
@@ -65,7 +65,7 @@ const pockets = {
         $across: $('#player2-pocket2')
     },
 
-    player1Pocket6 = {
+    player1Pocket6: {
         name: 'player1Pocket6',
         owner: playerOne,
         numStones: 0,
@@ -75,7 +75,7 @@ const pockets = {
         $across: $('#player2-pocket1')
     },
 
-    player2Pocket1 = {
+    player2Pocket1: {
         name: 'player2Pocket1',
         owner: playerTwo,
         numStones: 0,
@@ -85,7 +85,7 @@ const pockets = {
         $across: $('#player1-pocket6')
     },
 
-    player2Pocket2 = {
+    player2Pocket2: {
         name: 'player2Pocket2',
         owner: playerTwo,
         numStones: 0,
@@ -95,7 +95,7 @@ const pockets = {
         $across: $('#player1-pocket5')
     },
 
-    player2Pocket3 = {
+    player2Pocket3: {
         name: 'player2Pocket3',
         owner: playerTwo,
         numStones: 0,
@@ -105,7 +105,7 @@ const pockets = {
         $across: $('#player1-pocket4')
     },
 
-    player2Pocket4 = {
+    player2Pocket4: {
         name: 'player2Pocket4',
         owner: playerTwo,
         numStones: 0,
@@ -115,7 +115,7 @@ const pockets = {
         $across: $('#player1-pocket3')
     },
 
-    player2Pocket5 = {
+    player2Pocket5: {
         name: 'player2Pocket5',
         owner: playerTwo,
         numStones: 0,
@@ -125,7 +125,7 @@ const pockets = {
         $across: $('#player1-pocket2')
     },
 
-    player2Pocket6 = {
+    player2Pocket6: {
         name: 'player2Pocket6',
         owner: playerTwo,
         numStones: 0,
@@ -168,8 +168,8 @@ class Factory {
                     newStone.idNum = `${player}${pocket}${stone}`;
                     newStone.$location = $(`#player${player}-pocket${pocket}`);
                     $li.css('background', `${newStone.color}`);
-                    currentTarget.stones.push(newStone);
-                    //this.stones.push(newStone);
+                    pockets[currentTarget].stones.push(newStone);
+                    pockets[currentTarget].numStones++;
                     $ul.append($li);
                 }
                 $(`#player${player}-pocket${pocket}`).append($ul)

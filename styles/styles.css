@@ -29,5 +29,5 @@
 }
 
 ul {
-    list-style-image: 'IMG_4490.jpeg';
+    list-style-image: url(IMG_4490.jpeg);
 }
