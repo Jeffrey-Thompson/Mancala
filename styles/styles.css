@@ -27,3 +27,7 @@
 .hidden {
     display: none;
 }
+
+ul {
+    list-style-image: 'IMG_4490.jpeg';
+}

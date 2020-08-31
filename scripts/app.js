@@ -80,7 +80,8 @@ const player2Pocket1 = {
     numStones: 0,
     stones: [],
     fromStore: 1,
-    $location: $('#player2-pocket1')
+    $location: $('#player2-pocket1'),
+    $across: $('#player1-pocket6')
 };
 
 const player2Pocket2 = {
@@ -89,7 +90,8 @@ const player2Pocket2 = {
     numStones: 0,
     stones: [],
     fromStore: 2,
-    $location: $('#player2-pocket2')
+    $location: $('#player2-pocket2'),
+    $across: $('#player1-pocket5')
 };
 
 const player2Pocket3 = {
@@ -98,7 +100,8 @@ const player2Pocket3 = {
     numStones: 0,
     stones: [],
     fromStore: 3,
-    $location: $('#player2-pocket3')
+    $location: $('#player2-pocket3'),
+    $across: $('#player1-pocket4')
 };
 
 const player2Pocket4 = {
@@ -107,7 +110,8 @@ const player2Pocket4 = {
     numStones: 0,
     stones: [],
     fromStore: 4,
-    $location: $('#player2-pocket4')
+    $location: $('#player2-pocket4'),
+    $across: $('#player1-pocket3')
 };
 
 const player2Pocket5 = {
@@ -116,7 +120,8 @@ const player2Pocket5 = {
     numStones: 0,
     stones: [],
     fromStore: 5,
-    $location: $('#player2-pocket5')
+    $location: $('#player2-pocket5'),
+    $across: $('#player1-pocket2')
 };
 
 const player2Pocket6 = {
@@ -125,12 +130,13 @@ const player2Pocket6 = {
     numStones: 0,
     stones: [],
     fromStore: 1,
-    $location: $('#player2-pocket6')
+    $location: $('#player2-pocket6'),
+    $across: $('#player1-pocket1')
 };
 
-class Stones {
-    constructor(number) {
-        this.idNum = number;
+class Stone {
+    constructor(idNum) {
+        this.idNum = idNum;
         this.color = 'red';
         this.$location = null;
         this.shape = 'circle';
@@ -138,20 +144,52 @@ class Stones {
     }
 }
 
+class Factory {
+    constructor() {
+        this.idNum = 0;
+        this.color = 'red';
+        this.$location = null;
+        this.shape = 'circle';
+        this.class = 'stone';
+        this.stones = [];
+    }
+    makeStones() {
+        console.log('making stones');
+        for (let player = 1; player <= 2; player++) {        //Player loop
+            for (let pocket = 1; pocket <= 6; pocket++) {    //Pocket loop
+                const $ul = $('<ul />');
+                for (let stone = 1; stone <= 4; stone++) {  //Stone loop
+                    const $li = $('<li></li>');
+                    const newStone = new Stone();
+                    let currentTarget = "player"+player+"Pocket"+pocket;
+                    console.log(currentTarget);
+                    newStone.idNum = `${player}${pocket}${stone}`;
+                    newStone.$location = $(`#player${player}-pocket${pocket}`);
+                    $li.css('background', `${newStone.color}`);
+                    currentTarget.stones.push(newStone);
+                    //this.stones.push(newStone);
+                    $ul.append($li);
+                }
+                $(`#player${player}-pocket${pocket}`).append($ul)
+            }
+        }
+    }
+};
+
+const stoneFactory = new Factory();
+
 const game = {
     activePlayer: playerOne,
     passivePlayer: playerTwo,
     start() {
         console.log('game started');
-        game.makeStones();
+        stoneFactory.makeStones();
         $('.player1-pockets').on('click', generateSequence);
         $('#player1-turn').removeClass('hidden');
     },
-    makeStones() {
-        console.log('making stones');
-    },
     scoreboard() {
-
+        $('#player1-score').text(playerOne.score);
+        $('#player2-score').text(playerTwo.score);
     },
     changePlayer() {
 
