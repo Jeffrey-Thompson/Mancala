@@ -142,13 +142,13 @@ const game = {
     activePlayer: playerOne,
     passivePlayer: playerTwo,
     start() {
-        console.warn('game started');
-        this.makeStones();
-        $('.player1-pockets').on('click', this.generateSequence);
+        console.log('game started');
+        game.makeStones();
+        $('.player1-pockets').on('click', generateSequence);
         $('#player1-turn').removeClass('hidden');
     },
     makeStones() {
-
+        console.log('making stones');
     },
     scoreboard() {
 
@@ -160,5 +160,9 @@ const game = {
 
     }
 };
+
+const generateSequence = function() {
+    console.log('generating sequence');
+}
 
 $('#game-start').on('click', game.start);
