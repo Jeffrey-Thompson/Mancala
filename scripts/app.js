@@ -121,10 +121,23 @@ const player2Pocket6 = {
     $location: $('#player2-pocket6')
 };
 
+class Stones {
+    constructor(number) {
+        this.idNum = number;
+        this.color = 'red';
+        this.$location = null;
+        this.shape = 'circle';
+        this.class = 'stone';
+    }
+}
+
 const game = {
     activePlayer: playerOne,
     passivePlayer: playerTwo,
     start() {
+
+    },
+    makeStones() {
 
     },
     scoreboard() {
