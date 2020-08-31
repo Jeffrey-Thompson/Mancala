@@ -12,126 +12,128 @@ const playerTwo = {
     name: 'Player 2'
 };
 
-const player1Pocket1 = {
-    name: 'player1Pocket1',
-    owner: playerOne,
-    numStones: 0,
-    stones: [],
-    fromStore: 1,
-    //DOM location
-    $location: $('#player1-pocket1'),
-    //DOM location for opposite side of board
-    $across: $('#player2-pocket6')
-};
+const pockets = {
+    player1Pocket1 = {
+        name: 'player1Pocket1',
+        owner: playerOne,
+        numStones: 0,
+        stones: [],
+        fromStore: 1,
+        //DOM location
+        $location: $('#player1-pocket1'),
+        //DOM location for opposite side of board
+        $across: $('#player2-pocket6')
+    },
 
-const player1Pocket2 = {
-    name: 'player1Pocket2',
-    owner: playerOne,
-    numStones: 0,
-    stones: [],
-    fromStore: 2,
-    $location: $('#player1-pocket2'),
-    $across: $('#player2-pocket5')
-};
+    player1Pocket2 = {
+        name: 'player1Pocket2',
+        owner: playerOne,
+        numStones: 0,
+        stones: [],
+        fromStore: 2,
+        $location: $('#player1-pocket2'),
+        $across: $('#player2-pocket5')
+    },
 
-const player1Pocket3 = {
-    name: 'player1Pocket3',
-    owner: playerOne,
-    numStones: 0,
-    stones: [],
-    fromStore: 3,
-    $location: $('#player1-pocket3'),
-    $across: $('#player2-pocket4')
-};
+    player1Pocket3 = {
+        name: 'player1Pocket3',
+        owner: playerOne,
+        numStones: 0,
+        stones: [],
+        fromStore: 3,
+        $location: $('#player1-pocket3'),
+        $across: $('#player2-pocket4')
+    },
 
-const player1Pocket4 = {
-    name: 'player1Pocket4',
-    owner: playerOne,
-    numStones: 0,
-    stones: [],
-    fromStore: 4,
-    $location: $('#player1-pocket4'),
-    $across: $('#player2-pocket3')
-};
+    player1Pocket4 = {
+        name: 'player1Pocket4',
+        owner: playerOne,
+        numStones: 0,
+        stones: [],
+        fromStore: 4,
+        $location: $('#player1-pocket4'),
+        $across: $('#player2-pocket3')
+    },
 
-const player1Pocket5 = {
-    name: 'player1Pocket5',
-    owner: playerOne,
-    numStones: 0,
-    stones: [],
-    fromStore: 5,
-    $location: $('#player1-pocket5'),
-    $across: $('#player2-pocket2')
-};
+    player1Pocket5 = {
+        name: 'player1Pocket5',
+        owner: playerOne,
+        numStones: 0,
+        stones: [],
+        fromStore: 5,
+        $location: $('#player1-pocket5'),
+        $across: $('#player2-pocket2')
+    },
 
-const player1Pocket6 = {
-    name: 'player1Pocket6',
-    owner: playerOne,
-    numStones: 0,
-    stones: [],
-    fromStore: 6,
-    $location: $('#player1-pocket6'),
-    $across: $('#player2-pocket1')
-};
+    player1Pocket6 = {
+        name: 'player1Pocket6',
+        owner: playerOne,
+        numStones: 0,
+        stones: [],
+        fromStore: 6,
+        $location: $('#player1-pocket6'),
+        $across: $('#player2-pocket1')
+    },
 
-const player2Pocket1 = {
-    name: 'player2Pocket1',
-    owner: playerTwo,
-    numStones: 0,
-    stones: [],
-    fromStore: 1,
-    $location: $('#player2-pocket1'),
-    $across: $('#player1-pocket6')
-};
+    player2Pocket1 = {
+        name: 'player2Pocket1',
+        owner: playerTwo,
+        numStones: 0,
+        stones: [],
+        fromStore: 1,
+        $location: $('#player2-pocket1'),
+        $across: $('#player1-pocket6')
+    },
 
-const player2Pocket2 = {
-    name: 'player2Pocket2',
-    owner: playerTwo,
-    numStones: 0,
-    stones: [],
-    fromStore: 2,
-    $location: $('#player2-pocket2'),
-    $across: $('#player1-pocket5')
-};
+    player2Pocket2 = {
+        name: 'player2Pocket2',
+        owner: playerTwo,
+        numStones: 0,
+        stones: [],
+        fromStore: 2,
+        $location: $('#player2-pocket2'),
+        $across: $('#player1-pocket5')
+    },
 
-const player2Pocket3 = {
-    name: 'player2Pocket3',
-    owner: playerTwo,
-    numStones: 0,
-    stones: [],
-    fromStore: 3,
-    $location: $('#player2-pocket3'),
-    $across: $('#player1-pocket4')
-};
+    player2Pocket3 = {
+        name: 'player2Pocket3',
+        owner: playerTwo,
+        numStones: 0,
+        stones: [],
+        fromStore: 3,
+        $location: $('#player2-pocket3'),
+        $across: $('#player1-pocket4')
+    },
 
-const player2Pocket4 = {
-    name: 'player2Pocket4',
-    owner: playerTwo,
-    numStones: 0,
-    stones: [],
-    fromStore: 4,
-    $location: $('#player2-pocket4'),
-    $across: $('#player1-pocket3')
-};
+    player2Pocket4 = {
+        name: 'player2Pocket4',
+        owner: playerTwo,
+        numStones: 0,
+        stones: [],
+        fromStore: 4,
+        $location: $('#player2-pocket4'),
+        $across: $('#player1-pocket3')
+    },
 
-const player2Pocket5 = {
-    name: 'player2Pocket5',
-    owner: playerTwo,
-    numStones: 0,
-    stones: [],
-    fromStore: 5,
-    $location: $('#player2-pocket5'),
-    $across: $('#player1-pocket2')
-};
+    player2Pocket5 = {
+        name: 'player2Pocket5',
+        owner: playerTwo,
+        numStones: 0,
+        stones: [],
+        fromStore: 5,
+        $location: $('#player2-pocket5'),
+        $across: $('#player1-pocket2')
+    },
 
-const player2Pocket6 = {
-    name: 'player2Pocket6',
-    owner: playerTwo,
-    numStones: 0,
-    stones: [],
-    fromStore: 1,
-    $location: $('#player2-pocket6'),
-    $across: $('#player1-pocket1')
+    player2Pocket6 = {
+        name: 'player2Pocket6',
+        owner: playerTwo,
+        numStones: 0,
+        stones: [],
+        fromStore: 1,
+        $location: $('#player2-pocket6'),
+        $across: $('#player1-pocket1')
+    }
 };
 
 class Stone {
