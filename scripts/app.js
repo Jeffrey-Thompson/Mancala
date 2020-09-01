@@ -205,14 +205,34 @@ const game = {
         console.log('game started');
         stoneFactory.makeStones();
         $('.player1-pockets').on('click', generateSequence);
-        $('#player1-turn').removeClass('hidden');
+        $('#player1-turn').text("Player 1: It's Your Turn!");
     },
     scoreboard() {
         $('#player1-score').text(playerOne.score);
         $('#player2-score').text(playerTwo.score);
     },
     changePlayer() {
-
+        if (playerOne.numStones === 0 || playerTwo.numStones === 0){
+            return game.gameOver();
+        }
+        if (game.activePlayer === playerOne) {
+            game.activePlayer = playerTwo;
+            game.passivePlayer = playerOne;
+            $('#player1-turn').text('');
+            $('#player2-turn').text("Player 2: It's Your Turn!");
+            $('#player1-pockets').off('click');
+            $('player2-pockets').on('click', generateSequence);
+            return;
+        }
+        if (game.activePlayer === playerTwo) {
+            game.activePlayer = playerOne;
+            game.passivePlayer = playerTwo;
+            $('#player2-turn').text('');
+            $('#player1-turn').text("Player 1: It's Your Turn!");
+            $('#player2-pockets').off('click');
+            $('player1-pockets').on('click', generateSequence);
+            return;
+        }
     },
     gameOver() {
 
