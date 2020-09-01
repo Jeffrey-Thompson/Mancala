@@ -222,6 +222,7 @@ const generateSequence = function() {
     let remainingStones = pockets[target].stones;
     let fromStore = pockets[target].fromStore;
     const player = game.activePlayer;
+    const opponent = game.passivePlayer;
     //while remainingStones > 0
     //test if remainingStones is less than fromStore
     //if true sequence is on players side only loop through remainingStones-- and build sequence and return dropStones(pockets.dropSequence)
