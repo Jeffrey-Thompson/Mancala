@@ -3,13 +3,27 @@ console.log('Javascript is working');
 const playerOne = {
     score: 0,
     stones: 24,
-    name: 'Player 1'
+    name: 'Player 1',
+    store: {
+        name: 'player1Store',
+        owner: playerOne,
+        numStones: 0,
+        stones: [],
+        $location: $('#player1-store')
+    },
 };
 
 const playerTwo = {
     score: 0,
     stones: 24,
-    name: 'Player 2'
+    name: 'Player 2',    
+    store: {
+        name: 'player2Store',
+        owner: playerTwo,
+        numStones: 0,
+        stones: [],
+        $location: $('#player2-store')
+    }
 };
 
 const pockets = {
@@ -204,6 +218,22 @@ const game = {
 const generateSequence = function() {
     console.log('generating sequence');
     console.log(event);
+    //TODO find how to make target = the pocket clicked on
+    let remainingStones = pockets[target].stones;
+    let fromStore = pockets[target].fromStore;
+    const player = game.activePlayer;
+    //while remainingStones > 0
+    //test if remainingStones is less than fromStore
+    //if true sequence is on players side only loop through remainingStones-- and build sequence and return dropStones(pockets.dropSequence)
+    //if false loop through fromStore-- and build sequence to player store remainingStones--
+    //add player store to sequence
+    pockets.dropSequence.push(player.store);
+    remainingStones--;
+    //set fromStore to 6
+    //test if remainingStones is less than fromStore
+    //if true rest of sequence is on opponents side only loop through remainingStones-- and build sequence and return dropStones(pockets.dropSequence)
+    //if false loop through fromStore-- and build sequence to player store remainingStones--
+    //end while loop
 }
 
 $('#game-start').on('click', game.start);
