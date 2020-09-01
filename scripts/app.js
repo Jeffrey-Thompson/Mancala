@@ -244,7 +244,7 @@ const game = {
         }
     },
     gameOver() {
-
+        console.log('game over');
     }
 };
 
@@ -317,14 +317,14 @@ const lastStone = function(dropSequence, target) {
     const stoneSpot = finalPocket.stones;
     const pocketName = finalPocket.name;
     const player = game.activePlayer;
+    dropSequence = [];
     //last stone in player1 store
     if (pocketName === 'player1Store') {
         console.log('player 1 gets extra turn');
         stoneSpot.push(finalStone);
         player.score++;
         game.scoreboard();
-        $('#player1-turn').text('Play Again, Player 1!');
-        dropSequence = [];
+        $('#player1-turn').text('Play Again, Player 1!');       
         return
     }
     //last stone in player2 store
@@ -334,24 +334,24 @@ const lastStone = function(dropSequence, target) {
         player.score++;
         game.scoreboard();
         $('#player2-turn').text('Play Again, Player 2!');
-        dropSequence = [];
         return
     }
     //last stone in empty pocket of active player
     else if (finalPocket.owner === player && finalPocket.numStones === 0) {
-        dropSequence = [];
+        console.log('capture oppertunity');
         return capture(finalPocket);
     }
     //else
     else {
+        console.log('nothing much');
         stoneSpot.push(finalStone);
-        dropSequence = [];
         return game.changePlayer();
     }
 }
 
 const capture = function(finalStone) {
     console.log('trying to capture');
+    return game.changePlayer();
 } 
 
 $('#game-start').on('click', game.start);
