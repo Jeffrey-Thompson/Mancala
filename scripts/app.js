@@ -2,29 +2,31 @@ console.log('Javascript is working');
 
 const playerOne = {
     score: 0,
-    stones: 24,
+    stones: 0,
     name: 'Player 1',
     store: {
         name: 'player1Store',
-        owner: playerOne,
         numStones: 0,
         stones: [],
         $location: $('#player1-store')
     },
 };
 
+playerOne.store.owner = playerOne;
+
 const playerTwo = {
     score: 0,
-    stones: 24,
+    stones: 0,
     name: 'Player 2',    
     store: {
         name: 'player2Store',
-        owner: playerTwo,
         numStones: 0,
         stones: [],
         $location: $('#player2-store')
     }
 };
+
+playerTwo.store.owner = playerTwo;
 
 const pockets = {
     dropSequence: [],
@@ -181,14 +183,16 @@ class Factory {
                     let currentTarget = "player"+player+"Pocket"+pocket;
                     console.log(currentTarget);
                     newStone.idNum = `${player}${pocket}${stone}`;
-                    newStone.$location = $(`#player${player}-pocket${pocket}`);
-                    pockets[currentTarget].stones.push(newStone);
+                    newStone.$location = $(`#player${player}-pocket${pocket}>ul>li:eq(${stone-1})`);
                     pockets[currentTarget].numStones++;
+                    pockets[currentTarget].stones.push(newStone);
                     $ul.append($li);
                 }
                 $(`#player${player}-pocket${pocket}`).append($ul)
             }
         }
+        playerOne.numStones = pockets.player1Pocket1.numStones+pockets.player1Pocket2.numStones+pockets.player1Pocket3.numStones+pockets.player1Pocket4.numStones+pockets.player1Pocket5.numStones+pockets.player1Pocket6.numStones;
+        playerTwo.numStones = pockets.player2Pocket1.numStones+pockets.player2Pocket2.numStones+pockets.player2Pocket3.numStones+pockets.player2Pocket4.numStones+pockets.player2Pocket5.numStones+pockets.player2Pocket6.numStones;
     }
 };
 
