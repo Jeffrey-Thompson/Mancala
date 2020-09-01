@@ -13,6 +13,7 @@ const playerTwo = {
 };
 
 const pockets = {
+    dropSequence: [],
     player1Pocket1: {
         name: 'player1Pocket1',
         owner: playerOne,
@@ -202,6 +203,7 @@ const game = {
 
 const generateSequence = function() {
     console.log('generating sequence');
+    console.log(event);
 }
 
 $('#game-start').on('click', game.start);
