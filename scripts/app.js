@@ -254,7 +254,9 @@ const generateSequence = function() {
     //add player store to sequence
     pockets.dropSequence.push(player.store);
     remainingStones--;
+    //if remainingStones = 0, return dropStones(pockets.dropSequence)
     //set fromStore to 6
+    fromStore = 6;
     //test if remainingStones is less than fromStore
     //if true rest of sequence is on opponents side only loop through remainingStones-- and build sequence and return dropStones(pockets.dropSequence)
     //if false loop through fromStore-- and build sequence to player store remainingStones--
