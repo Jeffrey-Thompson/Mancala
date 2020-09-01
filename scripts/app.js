@@ -29,7 +29,6 @@ const playerTwo = {
 playerTwo.store.owner = playerTwo;
 
 const pockets = {
-    dropSequence: [],
     player1Pocket1: {
         name: 'player1Pocket1',
         owner: playerOne,
@@ -153,6 +152,12 @@ const pockets = {
     }
 };
 
+let dropSequence =[];
+playerOne.pocketOrder = [playerOne.store, pockets.player1Pocket1, pockets.player1Pocket2, pockets.player1Pocket3, pockets.player1Pocket4, pockets.player1Pocket5, pockets.player1Pocket6];
+playerOne.opponentPocketOrder = [pockets.player2Pocket1, pockets.player2Pocket2, pockets.player2Pocket3, pockets.player2Pocket4, pockets.player2Pocket5, pockets.player2Pocket6];
+playerOne.pocketOrder = [playerTwo.store, pockets.player2Pocket1, pockets.player2Pocket2, pockets.player2Pocket3, pockets.player2Pocket4, pockets.player2Pocket5, pockets.player2Pocket6];
+playerOne.opponentPocketOrder = [pockets.player1Pocket1, pockets.player1Pocket2, pockets.player1Pocket3, pockets.player1Pocket4, pockets.player1Pocket5, pockets.player1Pocket6];
+
 class Stone {
     constructor(idNum) {
         this.idNum = idNum;
@@ -243,40 +248,43 @@ const game = {
 
 const generateSequence = function(event) {
     console.log('generating sequence');
-    const target = event.currentTarget.id;
+    const curTarget = event.currentTarget.id;
+    const target = pockets[curTarget];
     console.log(target);
     //TODO find how to make target = the pocket clicked on
-    let remainingStones = pockets[target].stones;
-    let fromStore = pockets[target].fromStore;
+    let remainingStones = target.stones.length;
+    let fromStore = target.fromStore;
     const player = game.activePlayer;
-    const opponent = game.passivePlayer;
     //while remainingStones > 0
     while (remainingStones > 0) {
-    //test if remainingStones is less than fromStore
-    if (remainingStones < fromStore) {
-    //if true sequence is on players side only loop through remainingStones-- and build sequence and return dropStones(pockets.dropSequence)
-    
-    } else {
-    //if false loop through fromStore-- and build sequence to player store remainingStones--
-    
-    }
-    //add player store to sequence
-    pockets.dropSequence.push(player.store);
-    remainingStones--;
-    //if remainingStones = 0, return dropStones(pockets.dropSequence)
-    if (remainingStones === 0) {
-        return dropStones(pockets.dropSequence);
-    }
+        console.log('remainingStones' + remainingStones);
+        console.log('fromStore' + fromStore);
+        //loop to build sequence to drop stones and return dropSones(pockets.dropSequence)
+            while (fromStore > 0 && remainingStones > 0) {
+                fromStore--;
+                remainingStones--;
+                let currentPocket = player.pocketOrder[fromStore];
+                //console.log(currentPocket);
+                dropSequence.push(currentPocket);
+                console.log(dropSequence);
+            }
     //set fromStore to 6
-    fromStore = 6;
-    //test if remainingStones is less than fromStore
-    if (remainingStones < fromStore) {
-    //if true rest of sequence is on opponents side only loop through remainingStones-- and build sequence and return dropStones(pockets.dropSequence)
-    } else {
-    //if false loop through fromStore-- and build sequence to player store remainingStones--
+        fromStore = 6;
+        //loop to build sequence to drop stones and return dropSones(pockets.dropSequence)
+            while (fromStore > 0 && remainingStones > 0) {
+                fromStore--;
+                remainingStones--;
+                let currentPocket = player.opponentPocketOrder[fromStore];
+                //console.log(currentPocket);
+                dropSequence.push(currentPocket);
+                console.log(dropSequence);
+            }
     }
-    //end while loop
-    }
+    return dropStones(dropSequence);
+}
+
+const dropStones = function(dropSequence) {
+    console.log('dropping stones');
 }
 
 $('#game-start').on('click', game.start);
