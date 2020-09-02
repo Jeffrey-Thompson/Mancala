@@ -200,7 +200,7 @@ class Factory {
                     const $li = $('<li></li>');
                     const newStone = new Stone();
                     let currentTarget = "player"+player+"Pocket"+pocket;
-                    console.log(currentTarget);
+                    //console.log(currentTarget);
                     newStone.idNum = `${player}${pocket}${stone}`;
                     pockets[currentTarget].numStones++;
                     pockets[currentTarget].stones.push(newStone);
@@ -398,12 +398,8 @@ const lastStone = function(sequence, target) {
     //last stone in empty pocket of active player
     else if (owner && empty) {
         console.log('capture oppertunity');
-        player.store.stones.push(finalStone);
-        let $ul = $(player.store.$location);
-        let $li = $(`${target.$location}>li`).eq(0);
-        $($ul).append($li);
         target.stones = [];
-        return capture(finalPocket);
+        return capture(finalPocket, finalStone, target);
     }
     //else
     else {
@@ -418,19 +414,26 @@ const lastStone = function(sequence, target) {
     }
 }
 
-const capture = function(finalPocket) {
+const capture = function(finalPocket, finalStone, target) {
     console.log('trying to capture');
     const opponentPocket = finalPocket.across;
     const capturedStones = opponentPocket.stones;
     const player = game.activePlayer;
     const $storeul = $(player.store.$location);
+    player.store.stones.push(finalStone);
+    let $ul = $(player.store.$location);
+    let $li = $(`${target.$location}>li`).eq(0);
+    player.score++;
+    player.store.numStones++;
+    $($ul).append($li);
     for (let i = 0; i < capturedStones.length; i++) {
         player.store.stones.push(capturedStones[i]);
-        player.score++;
         let $li = $(`${opponentPocket.$location}>li`).eq(0);
         $($storeul).append($li);
+        player.score++;
         player.store.numStones++;
     }
+    opponentPocket.numStones = 0;
     game.scoreboard();
     return game.changePlayer();
 } 
