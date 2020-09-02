@@ -245,6 +245,7 @@ const game = {
             $('#player2-turn').text("Player 2: It's Your Turn!");
             $('.player1-pockets').off('click');
             $('.player2-pockets').on('click', generateSequence);
+            console.log(game.activePlayer);
             return;
         }
         if (game.activePlayer === playerTwo) {
@@ -254,13 +255,14 @@ const game = {
             $('#player1-turn').text("Player 1: It's Your Turn!");
             $('.player2-pockets').off('click');
             $('.player1-pockets').on('click', generateSequence);
+            console.log(game.activePlayer);
             return;
         }
     },
     gameOver() {
         console.log('game over');
         $('#player-pocket-area').html('<div id = "game-over"><h3>Game Over</h3><h2 id ="winner"></h2><h3 id ="final-score"></h3>');
-        $('#final-score').text(`Player 1: ${playerOne.score}    Player 2: ${playerTwo.score}`);
+        $('#final-score').text(`Player 1: ${playerOne.score}\nPlayer 2: ${playerTwo.score}`);
         if (playerOne.score > playerTwo.score){
             $('#winner').text('Player 1 wins!');
         } else if (playerTwo.score > playerOne.score) {
@@ -319,10 +321,10 @@ const dropStones = function(dropSequence, target) {
         let stoneTarget = currentPocket.stones
         //stores DOM location to append to
         let $ul = $(currentPocket.$location);
-        //console.log($ul);
+        console.log($ul);
         //store DOM location of list item
-        let $li = $(`${target.$location}>li`).eq(i-1);
-        //console.log($li);
+        let $li = $(`${target.$location}>li`).eq(0);
+        console.log($li);
         $($ul).append($li);
         stoneTarget.push(stoneArray[i]);
         currentPocket.numStones++;
@@ -341,6 +343,16 @@ const lastStone = function(sequence, target) {
     const stoneSpot = finalPocket.stones;
     const pocketName = finalPocket.name;
     const player = game.activePlayer;
+    let owner = false;
+    let empty = false;
+    if (finalPocket.owner === player) {
+        owner = true;
+    }
+    if (finalPocket.numStones === 0) {
+        empty = true;
+    }
+    console.log(owner);
+    console.log(empty);
     dropSequence = [];
     //console.log(dropSequence);
     //last stone in player1 store
@@ -351,6 +363,7 @@ const lastStone = function(sequence, target) {
         let $li = $(`${target.$location}>li`).eq(0);
         $($ul).append($li);
         player.score++;
+        player.store.numStones++;
         game.scoreboard();
         $('#player1-turn').text('Play Again, Player 1!');
         target.stones = [];
@@ -370,6 +383,7 @@ const lastStone = function(sequence, target) {
         let $li = $(`${target.$location}>li`).eq(0);
         $($ul).append($li);
         player.score++;
+        player.store.numStones++;
         game.scoreboard();
         $('#player2-turn').text('Play Again, Player 2!');
         target.stones = [];
@@ -382,7 +396,7 @@ const lastStone = function(sequence, target) {
         return
     }
     //last stone in empty pocket of active player
-    else if (finalPocket.owner === player && finalPocket.numStones === 0) {
+    else if (owner && empty) {
         console.log('capture oppertunity');
         player.store.stones.push(finalStone);
         let $ul = $(player.store.$location);
@@ -395,6 +409,7 @@ const lastStone = function(sequence, target) {
     else {
         console.log('nothing much');
         stoneSpot.push(finalStone);
+        finalPocket.numStones++;
         let $ul = $(finalPocket.$location);
         let $li = $(`${target.$location}>li`).eq(0);
         $($ul).append($li);
@@ -412,7 +427,7 @@ const capture = function(finalPocket) {
     for (let i = 0; i < capturedStones.length; i++) {
         player.store.stones.push(capturedStones[i]);
         player.score++;
-        let $li = $(`${opponentPocket.$location}>li`).eq(i);
+        let $li = $(`${opponentPocket.$location}>li`).eq(0);
         $($storeul).append($li);
         player.store.numStones++;
     }
