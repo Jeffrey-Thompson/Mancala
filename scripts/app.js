@@ -259,6 +259,15 @@ const game = {
     },
     gameOver() {
         console.log('game over');
+        $('#player-pocket-area').html('<div id = "game-over"><h3>Game Over</h3><h2 id ="winner"></h2><h3 id ="final-score"></h3>');
+        $('#final-score').text(`Player 1: ${playerOne.score}    Player 2: ${playerTwo.score}`);
+        if (playerOne.score > playerTwo.score){
+            $('#winner').text('Player 1 wins!');
+        } else if (playerTwo.score > playerOne.score) {
+            $('#winner').text('Player 2 wins!');
+        } else {
+            $('#winner').text("It's a tie. Play Again!");
+        }
     }
 };
 
@@ -296,7 +305,7 @@ const generateSequence = function(event) {
                 //console.log(dropSequence);
             }
     }
-    console.log(dropSequence);
+    //console.log(dropSequence);
     return dropStones(dropSequence , target);
 }
 
@@ -313,7 +322,7 @@ const dropStones = function(dropSequence, target) {
         //console.log($ul);
         //store DOM location of list item
         let $li = $(`${target.$location}>li`).eq(i-1);
-        console.log($li);
+        //console.log($li);
         $($ul).append($li);
         stoneTarget.push(stoneArray[i]);
         currentPocket.numStones++;
@@ -333,7 +342,7 @@ const lastStone = function(sequence, target) {
     const pocketName = finalPocket.name;
     const player = game.activePlayer;
     dropSequence = [];
-    console.log(dropSequence);
+    //console.log(dropSequence);
     //last stone in player1 store
     if (pocketName === 'player1Store') {
         console.log('player 1 gets extra turn');
