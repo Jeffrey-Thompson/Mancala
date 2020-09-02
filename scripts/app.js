@@ -158,6 +158,19 @@ playerOne.pocketOrder = [playerOne.store, pockets.player1Pocket1, pockets.player
 playerOne.opponentPocketOrder = [pockets.player2Pocket1, pockets.player2Pocket2, pockets.player2Pocket3, pockets.player2Pocket4, pockets.player2Pocket5, pockets.player2Pocket6];
 playerTwo.pocketOrder = [playerTwo.store, pockets.player2Pocket1, pockets.player2Pocket2, pockets.player2Pocket3, pockets.player2Pocket4, pockets.player2Pocket5, pockets.player2Pocket6];
 playerTwo.opponentPocketOrder = [pockets.player1Pocket1, pockets.player1Pocket2, pockets.player1Pocket3, pockets.player1Pocket4, pockets.player1Pocket5, pockets.player1Pocket6];
+pockets.player1Pocket1.across = pockets.player2Pocket6;
+pockets.player1Pocket2.across = pockets.player2Pocket5;
+pockets.player1Pocket3.across = pockets.player2Pocket4;
+pockets.player1Pocket4.across = pockets.player2Pocket3;
+pockets.player1Pocket5.across = pockets.player2Pocket2;
+pockets.player1Pocket6.across = pockets.player2Pocket1;
+pockets.player2Pocket1.across = pockets.player1Pocket6;
+pockets.player2Pocket2.across = pockets.player1Pocket5;
+pockets.player2Pocket3.across = pockets.player1Pocket4;
+pockets.player2Pocket4.across = pockets.player1Pocket3;
+pockets.player2Pocket5.across = pockets.player1Pocket2;
+pockets.player2Pocket6.across = pockets.player1Pocket1;
+
 
 class Stone {
     constructor(idNum) {
@@ -348,6 +361,10 @@ const lastStone = function(sequence, target) {
     //last stone in empty pocket of active player
     else if (finalPocket.owner === player && finalPocket.numStones === 0) {
         console.log('capture oppertunity');
+        player.store.stones.push(finalStone);
+        let $ul = $(player.store.$location);
+        let $li = $(`${target.$location}>li`).eq(0);
+        $($ul).append($li);
         target.stones = [];
         return capture(finalPocket);
     }
@@ -363,8 +380,20 @@ const lastStone = function(sequence, target) {
     }
 }
 
-const capture = function(finalStone) {
+const capture = function(finalPocket) {
     console.log('trying to capture');
+    const opponentPocket = finalPocket.across;
+    const capturedStones = opponentPocket.stones;
+    const player = game.activePlayer;
+    const $storeul = $(player.store.$location);
+    for (let i = 0; i < capturedStones.length; i++) {
+        player.store.stones.push(capturedStones[i]);
+        player.score++;
+        let $li = $(`${opponentPocket.$location}>li`).eq(i);
+        $($storeul).append($li);
+        player.store.numStones++;
+    }
+    game.scoreboard();
     return game.changePlayer();
 } 
 
