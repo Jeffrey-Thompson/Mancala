@@ -233,6 +233,8 @@ const game = {
     },
     changePlayer() {
         console.log('changing players');
+        playerOne.numStones = pockets.player1Pocket1.numStones+pockets.player1Pocket2.numStones+pockets.player1Pocket3.numStones+pockets.player1Pocket4.numStones+pockets.player1Pocket5.numStones+pockets.player1Pocket6.numStones;
+        playerTwo.numStones = pockets.player2Pocket1.numStones+pockets.player2Pocket2.numStones+pockets.player2Pocket3.numStones+pockets.player2Pocket4.numStones+pockets.player2Pocket5.numStones+pockets.player2Pocket6.numStones;
         if (playerOne.numStones === 0 || playerTwo.numStones === 0){
             return game.gameOver();
         }
@@ -342,7 +344,13 @@ const lastStone = function(sequence, target) {
         player.score++;
         game.scoreboard();
         $('#player1-turn').text('Play Again, Player 1!');
-        target.stones = [];       
+        target.stones = [];
+        playerOne.numStones = pockets.player1Pocket1.numStones+pockets.player1Pocket2.numStones+pockets.player1Pocket3.numStones+pockets.player1Pocket4.numStones+pockets.player1Pocket5.numStones+pockets.player1Pocket6.numStones;
+        playerTwo.numStones = pockets.player2Pocket1.numStones+pockets.player2Pocket2.numStones+pockets.player2Pocket3.numStones+pockets.player2Pocket4.numStones+pockets.player2Pocket5.numStones+pockets.player2Pocket6.numStones;
+        if (playerOne.numStones === 0 || playerTwo.numStones === 0){
+            $('#player1-turn').addClass('hidden');
+            return game.gameOver();
+        }   
         return
     }
     //last stone in player2 store
@@ -356,6 +364,12 @@ const lastStone = function(sequence, target) {
         game.scoreboard();
         $('#player2-turn').text('Play Again, Player 2!');
         target.stones = [];
+        playerOne.numStones = pockets.player1Pocket1.numStones+pockets.player1Pocket2.numStones+pockets.player1Pocket3.numStones+pockets.player1Pocket4.numStones+pockets.player1Pocket5.numStones+pockets.player1Pocket6.numStones;
+        playerTwo.numStones = pockets.player2Pocket1.numStones+pockets.player2Pocket2.numStones+pockets.player2Pocket3.numStones+pockets.player2Pocket4.numStones+pockets.player2Pocket5.numStones+pockets.player2Pocket6.numStones;
+        if (playerOne.numStones === 0 || playerTwo.numStones === 0){
+            $('#player2-turn').addClass('hidden');
+            return game.gameOver();
+        }
         return
     }
     //last stone in empty pocket of active player
