@@ -90,3 +90,24 @@ body {
 #player2-turn {
     right: 0px;
 }
+
+@media (max-width: 1300px) {
+    
+    .player-pockets {
+        width: 10%;
+        margin: 0px;
+        border-radius: 20%;
+    }
+
+    .player-store {
+        width: 20%;
+    }
+
+    .player1-pockets {
+        margin-bottom: 120px;
+    }
+    
+    #gameboard {
+        padding: 0px;
+    }
+}
