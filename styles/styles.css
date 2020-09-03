@@ -31,6 +31,9 @@
     border: 5px solid black;
     padding: 20px;
     background-color: navajowhite;
+    /* background-image: url('Wood-Grain-Texture-11.png');
+    opacity: 90%; */
+    /* background image source: Chris Spooner https://blog.spoongraphics.co.uk/bundle */
 }
 
 #player-pocket-area {
@@ -52,6 +55,8 @@ ul {
 .player-alerts {
     display: flex;
     flex-direction: row;
+    background-color: white;
+    opacity: 90%;
 }
 
 #player1-turn, #player2-turn {
@@ -70,17 +75,22 @@ h1 {
     text-align: center;
     margin: 0 auto;
     border: 5px solid black;
+    background-color: white;
 }
 
 body {
-    background-color: paleturquoise;
     font-family: 'Kufam', cursive;
+    background-image: url('Geometric-Pattern-2.png');
+    /* background image source: Chris Spooner https://blog.spoongraphics.co.uk/bundle */
 }
 
 #game-start {
     width: 100%;
+    height: 40px;
     position: absolute;
     left: 0px;
+    background-color: green;
+    opacity: 100%;
 }
 
 #game-over {
