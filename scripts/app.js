@@ -264,7 +264,8 @@ const game = {
         console.log('game over');
         $('#player2-turn').addClass('hidden');
         $('#player1-turn').addClass('hidden');
-        $('#player-pocket-area').html('<div id = "game-over"><h3>Game Over</h3><h2 id ="winner"></h2><h3 id ="final-score"></h3>');
+        $('#player-pocket-area').addClass('hidden');
+        $('#game-over').html('<h3>Game Over</h3><h2 id ="winner"></h2><h3 id ="final-score"></h3>');
         $('#final-score').text(`Player 1: ${playerOne.score}\nPlayer 2: ${playerTwo.score}`);
         if (playerOne.score > playerTwo.score){
             $('#winner').text('Player 1 wins!');
@@ -273,7 +274,20 @@ const game = {
         } else {
             $('#winner').text("It's a tie. Play Again!");
         }
-    }
+    },
+    /**
+     * pause function
+     * @author Iana Tsolova https://www.telerik.com/blogs/how-do-i-pause-execution-in-javascript
+     */
+    pause(numberMillis) { 
+        var now = new Date(); 
+        var exitTime = now.getTime() + numberMillis; 
+        while (true) { 
+            now = new Date(); 
+            if (now.getTime() > exitTime) 
+                return; 
+        } 
+    } 
 };
 
 const generateSequence = function(event) {
@@ -344,6 +358,7 @@ const dropStones = function(dropSequence, target) {
         //store DOM location of list item
         let $li = $(`${target.$location}>li`).eq(0);
         //console.log($li);
+        game.pause(50);
         $($ul).append($li);
         stoneTarget.push(stoneArray[i]);
         currentPocket.numStones++;
@@ -366,6 +381,7 @@ const lastStone = function(sequence, target) {
     const player = game.activePlayer;
     let owner = false;
     let empty = false;
+    game.pause(50);
     if (finalPocket.owner === player) {
         owner = true;
     }

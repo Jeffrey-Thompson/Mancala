@@ -72,8 +72,21 @@ h1 {
 
 body {
     background-color: paleturquoise;
+    font-family: 'Kufam', cursive;
 }
 
 #game-start {
     width: 100%;
+    position: absolute;
+    left: 0px;
+}
+
+#game-over {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#player2-turn {
+    right: 0px;
 }
