@@ -1,23 +1,34 @@
 .player-pockets {
-    height: 300px;
+    height: 250px;
     width: 100px;
     border: 1px solid black;
-    border-radius: 20%;
-    padding: 10px;
+    border-radius: 40%;
+    padding: 20px;
+    margin: 0 10px 0 10px;
+    display: flex;
+    padding-top: 40px;
+}
+
+.player1-pockets {
+    margin-bottom: 120px;
 }
 
 .player-store {
-    height: 700px;
+    height: 600px;
     width: 300px;
     border: 1px solid black;
-    border-radius: 20%;
+    border-radius: 40%;
     padding: 50px;
+    display: flex;
+    padding-top: 100px;
 }
 
 #gameboard {
     display: flex;
     flex-direction: row;
     border: 5px solid black;
+    padding: 20px;
+    background-color: navajowhite;
 }
 
 #player-pocket-area {
@@ -32,4 +43,37 @@
 
 ul {
     list-style-image: url('IMG_4490.jpeg');
+    column-count: 2;
+    column-width: 22px;
+}
+
+.player-alerts {
+    display: flex;
+    flex-direction: row;
+}
+
+#player1-turn, #player2-turn {
+    width: 80%;
+    color: red;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: blue;
+}
+
+#rules {
+    width: 800px;
+    text-align: center;
+    margin: 0 auto;
+    border: 5px solid black;
+}
+
+body {
+    background-color: paleturquoise;
+}
+
+#game-start {
+    width: 100%;
 }

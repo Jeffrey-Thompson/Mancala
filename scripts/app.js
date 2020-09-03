@@ -225,6 +225,7 @@ const game = {
         $('.player1-pockets').on('click', generateSequence);
         $('#player1-turn').text("Player 1: It's Your Turn!");
         $('#game-start').addClass('hidden');
+        $('.player-score-area').removeClass('hidden');
     },
     scoreboard() {
         console.log('changing score');
@@ -284,12 +285,12 @@ const generateSequence = function(event) {
     let fromStore = target.fromStore;
     const player = game.activePlayer;
     target.numStones = 0;
+    let loopRounds = 0;
     //while remainingStones > 0
     while (remainingStones > 0) {
-        let loopRounds = 0;
         if (loopRounds > 0) {
             console.log('reseting fromStore');
-            fromStore = 6;
+            fromStore = 7;
         }
         //console.log('remainingStones' + remainingStones);
         //console.log('fromStore' + fromStore);
@@ -305,14 +306,17 @@ const generateSequence = function(event) {
         //set fromStore to 6
         fromStore = 6;
         //loop to build sequence to drop stones and return dropSones(pockets.dropSequence)
-            while (fromStore !== 0 && remainingStones > 0) {
+            while (fromStore > 0 && remainingStones > 0) {
+                console.log("fromStore !== 0 && remainingStones > 0",fromStore !== 0 && remainingStones > 0);
+                console.log("from store is not zero",fromStore !== 0,"remaining stones greater than zero", remainingStones >0);
                 fromStore--;
                 remainingStones--;
                 let currentPocket = player.opponentPocketOrder[fromStore];
                 //console.log(currentPocket);
                 dropSequence.push(currentPocket);
                 //console.log(dropSequence);
-                console.log(fromStore);
+                console.log("from store",fromStore);
+                console.log("remaining stones",remainingStones);
             }
         loopRounds++;
     }

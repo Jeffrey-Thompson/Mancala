@@ -10,10 +10,11 @@
 </head>
 <body>
     <h1>Mancala</h1>
-    <button id = 'game-start'>Start Game</button>
-    <div id = 'player1-alerts'>
-        <h3>Player 1 Current Score: <span id = 'player1-score'>0</span></h3>
-        <h3 id= 'player1-turn'></h3>
+    
+    <div id = 'player1-alerts' class= 'player-alerts'>
+        <h3 class='player-score-area hidden'>Player 1 Current Score: <span id = 'player1-score'>0</span></h3>
+        <h2 id= 'player1-turn'></h2>
+        <button id = 'game-start'>Start Game</button>
     </div>
     <section id = 'gameboard'>
         <div id = 'player1-store' class= 'player-store'>
@@ -37,9 +38,9 @@
             <ul></ul>
         </div>
     </section>
-    <div id = 'player2-alerts'>
-        <h3>Player 2 Current Score: <span id = 'player2-score'>0</span></h3>
-        <h3 id= 'player2-turn'></h3>
+    <div id = 'player2-alerts' class= 'player-alerts'>
+        <h3 class='player-score-area hidden'>Player 2 Current Score: <span id = 'player2-score'>0</span></h3>
+        <h2 id= 'player2-turn'></h2>
     </div>
     <section id = 'rules'>
         <h3>The Objective:</h3>
