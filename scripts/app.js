@@ -146,7 +146,7 @@ const pockets = {
         owner: playerTwo,
         numStones: 0,
         stones: [],
-        fromStore: 1,
+        fromStore: 6,
         $location: '#player2Pocket6>ul',
         $across: '#player1Pocket1>ul'
     }
@@ -279,17 +279,19 @@ const generateSequence = function(event) {
     console.log('generating sequence');
     const curTarget = event.currentTarget.id;
     const target = pockets[curTarget];
-    //console.log(target);
+    console.log(target);
     let remainingStones = target.stones.length;
     let fromStore = target.fromStore;
     const player = game.activePlayer;
     target.numStones = 0;
-    if (remainingStones === 1) {
+    /* if (remainingStones === 1) {
         console.log('only one stone');
         let currentPocket = player.pocketOrder[fromStore-1];
         dropSequence.push(currentPocket);
         remainingStones--;
-    }
+        console.log(dropSequence);
+        return dropStones(dropSequence , target);
+    } */
     //while remainingStones > 0
     while (remainingStones > 0) {
         //console.log('remainingStones' + remainingStones);
@@ -299,7 +301,7 @@ const generateSequence = function(event) {
                 fromStore--;
                 remainingStones--;
                 let currentPocket = player.pocketOrder[fromStore];
-                //console.log(currentPocket);
+                console.log(currentPocket);
                 dropSequence.push(currentPocket);
                 //console.log(dropSequence);
             }
@@ -315,7 +317,7 @@ const generateSequence = function(event) {
                 //console.log(dropSequence);
             }
     }
-    //console.log(dropSequence);
+    console.log(dropSequence);
     return dropStones(dropSequence , target);
 }
 
@@ -325,7 +327,7 @@ const dropStones = function(dropSequence, target) {
     let stoneArray = target.stones;
     if (stoneArray.length === 1) {
         console.log('skipping to last stone');
-        console.log(dropSequence);
+        //console.log(dropSequence);
         //checkStoneCount();
         return lastStone(dropSequence, target);
     }
@@ -342,10 +344,10 @@ const dropStones = function(dropSequence, target) {
         $($ul).append($li);
         stoneTarget.push(stoneArray[i]);
         currentPocket.numStones++;
-        checkStoneCount();        
+        //checkStoneCount();        
         if (currentPocket.name === 'player1Store' || currentPocket.name === 'player2Store') {
             player.score++;
-            console.log(`Player 1 score: ${playerOne.score} Player 2 score: ${playerTwo.score}`);
+            //console.log(`Player 1 score: ${playerOne.score} Player 2 score: ${playerTwo.score}`);
             game.scoreboard();
         }
     }
@@ -381,11 +383,11 @@ const lastStone = function(sequence, target) {
         $($ul).append($li);
         player.score++;
         player.store.numStones++;
-        console.log(`Player 1 score: ${playerOne.score} Player 2 score: ${playerTwo.score}`);
+        //console.log(`Player 1 score: ${playerOne.score} Player 2 score: ${playerTwo.score}`);
         game.scoreboard();
         $('#player1-turn').text('Play Again, Player 1!');
         target.stones = [];
-        checkStoneCount();
+        //checkStoneCount();
         playerOne.numStones = pockets.player1Pocket1.numStones+pockets.player1Pocket2.numStones+pockets.player1Pocket3.numStones+pockets.player1Pocket4.numStones+pockets.player1Pocket5.numStones+pockets.player1Pocket6.numStones;
         playerTwo.numStones = pockets.player2Pocket1.numStones+pockets.player2Pocket2.numStones+pockets.player2Pocket3.numStones+pockets.player2Pocket4.numStones+pockets.player2Pocket5.numStones+pockets.player2Pocket6.numStones;
         if (playerOne.numStones === 0 || playerTwo.numStones === 0){
@@ -402,11 +404,11 @@ const lastStone = function(sequence, target) {
         $($ul).append($li);
         player.score++;
         player.store.numStones++;
-        console.log(`Player 1 score: ${playerOne.score} Player 2 score: ${playerTwo.score}`);
+        //console.log(`Player 1 score: ${playerOne.score} Player 2 score: ${playerTwo.score}`);
         game.scoreboard();
         $('#player2-turn').text('Play Again, Player 2!');
         target.stones = [];
-        checkStoneCount();
+        //checkStoneCount();
         playerOne.numStones = pockets.player1Pocket1.numStones+pockets.player1Pocket2.numStones+pockets.player1Pocket3.numStones+pockets.player1Pocket4.numStones+pockets.player1Pocket5.numStones+pockets.player1Pocket6.numStones;
         playerTwo.numStones = pockets.player2Pocket1.numStones+pockets.player2Pocket2.numStones+pockets.player2Pocket3.numStones+pockets.player2Pocket4.numStones+pockets.player2Pocket5.numStones+pockets.player2Pocket6.numStones;
         if (playerOne.numStones === 0 || playerTwo.numStones === 0){
@@ -429,7 +431,7 @@ const lastStone = function(sequence, target) {
         let $li = $(`${target.$location}>li`).eq(0);
         $($ul).append($li);
         target.stones = [];
-        checkStoneCount();
+        //checkStoneCount();
         return game.changePlayer();
     }
 }
@@ -447,7 +449,7 @@ const capture = function(finalPocket, finalStone, target) {
     player.store.numStones++;
     console.log(`Player 1 score: ${playerOne.score} Player 2 score: ${playerTwo.score}`);
     $($ul).append($li);
-    checkStoneCount();
+    //checkStoneCount();
     for (let i = 0; i < capturedStones.length; i++) {
         console.log('capture loop');
         player.store.stones.push(capturedStones[i]);
@@ -460,7 +462,7 @@ const capture = function(finalPocket, finalStone, target) {
     }
     opponentPocket.numStones = 0;
     opponentPocket.stones = [];
-    checkStoneCount();
+    //checkStoneCount();
     game.scoreboard();
     return game.changePlayer();
 } 
