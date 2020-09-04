@@ -266,7 +266,9 @@ const game = {
         $('#player1-turn').addClass('hidden');
         $('#player-pocket-area').addClass('hidden');
         $('#game-over').html('<h3>Game Over</h3><h2 id ="winner"></h2><h3 id ="final-score"></h3>');
-        $('#final-score').text(`Player 1: ${playerOne.score}\nPlayer 2: ${playerTwo.score}`);
+        $('#game-over').css('padding-top', '200px');
+        $('#game-over').css('font-size', '30px');
+        $('#final-score').text(`Player 1: ${playerOne.score} Player 2: ${playerTwo.score}`);
         if (playerOne.score > playerTwo.score){
             $('#winner').text('Player 1 wins!');
         } else if (playerTwo.score > playerOne.score) {

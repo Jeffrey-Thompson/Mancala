@@ -3,7 +3,7 @@
     width: 100px;
     border: 1px solid black;
     border-radius: 40%;
-    box-shadow: 10px 10px 10px 10px grey inset;
+    box-shadow: 10px 10px 10px 10px black inset;
     padding: 20px;
     margin: 0 10px 0 10px;
     display: flex;
@@ -18,7 +18,7 @@
     height: 600px;
     width: 300px;
     border: 1px solid black;
-    box-shadow: 20px 20px 20px 20px grey inset;
+    box-shadow: 20px 20px 20px 20px black inset;
     border-radius: 40%;
     padding: 50px;
     display: flex;
@@ -31,8 +31,7 @@
     border: 5px solid black;
     padding: 20px;
     background-color: navajowhite;
-    /* background-image: url('Wood-Grain-Texture-11.png');
-    opacity: 90%; */
+    background-image: url('Wood-Grain-Texture-11.png');
     /* background image source: Chris Spooner https://blog.spoongraphics.co.uk/bundle */
 }
 
@@ -97,6 +96,7 @@ body {
     text-align: center;
     width: 100%;
     margin: 0 auto;
+    font-weight: bold;
 }
 
 #player2-turn {
