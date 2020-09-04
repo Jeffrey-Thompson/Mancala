@@ -36,3 +36,4 @@ Game reset button and multi-game score tracking.
 Board turning animation between player turns so that the active player is always playing like looking at a physical board.
 One player mode- computer pickes their pocket at random.
 
+<img src="Screen Shot 2020-09-04 at 8.59.36 AM.png" alt='wireframe'>
