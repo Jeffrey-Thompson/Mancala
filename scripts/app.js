@@ -339,20 +339,20 @@ const generateSequence = function(event) {
         fromStore = 6;
         //loop to build sequence to drop stones and return dropSones(pockets.dropSequence)
             while (fromStore > 0 && remainingStones > 0) {
-                console.log("fromStore !== 0 && remainingStones > 0",fromStore !== 0 && remainingStones > 0);
-                console.log("from store is not zero",fromStore !== 0,"remaining stones greater than zero", remainingStones >0);
+                //console.log("fromStore !== 0 && remainingStones > 0",fromStore !== 0 && remainingStones > 0);
+                //console.log("from store is not zero",fromStore !== 0,"remaining stones greater than zero", remainingStones >0);
                 fromStore--;
                 remainingStones--;
                 let currentPocket = player.opponentPocketOrder[fromStore];
                 //console.log(currentPocket);
                 dropSequence.push(currentPocket);
                 //console.log(dropSequence);
-                console.log("from store",fromStore);
-                console.log("remaining stones",remainingStones);
+                //console.log("from store",fromStore);
+                //console.log("remaining stones",remainingStones);
             }
         loopRounds++;
     }
-    console.log(dropSequence);
+    //console.log(dropSequence);
     return dropStones(dropSequence , target);
 }
 
