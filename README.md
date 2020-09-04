@@ -35,3 +35,4 @@ CSS styling with a wood-grain board and irregularly shaped stones to simulate pl
 Game reset button and multi-game score tracking.
 Board turning animation between player turns so that the active player is always playing like looking at a physical board.
 One player mode- computer pickes their pocket at random.
+

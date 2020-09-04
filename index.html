@@ -12,6 +12,13 @@
 <body>
     <h1>Mancala</h1>
     
+    <div id = 'startStones-selector'>
+        <span>Starting Stones Per Pocket:</span>
+        <input type= 'radio' id= 'three' name='startStones' value = 3><label for= 'three'>3</label>
+        <input type= 'radio' id= 'four' name='startStones' value = 4 checked= 'checked'><label for= 'four'>4</label>
+        <input type= 'radio' id= 'five' name='startStones' value = 5><label for= 'five'>5</label>
+        <input type= 'radio' id= 'six' name='startStones' value = 6><label for= 'six'>6</label>
+    </div>
     <div id = 'player1-alerts' class= 'player-alerts'>
         <h3 class='player-score-area hidden'>Player 1 Current Score: <span id = 'player1-score'>0</span></h3>
         <h2 id= 'player1-turn'></h2>

@@ -191,12 +191,12 @@ class Factory {
         this.class = 'stone';
         this.stones = [];
     }
-    makeStones() {
+    makeStones(startingStones) {
         console.log('making stones');
         for (let player = 1; player <= 2; player++) {        //Player loop
             for (let pocket = 1; pocket <= 6; pocket++) {    //Pocket loop
                 const $ul = $('<ul />');
-                for (let stone = 1; stone <= 4; stone++) {  //Stone loop
+                for (let stone = 1; stone <= startingStones; stone++) {  //Stone loop
                     const $li = $('<li></li>');
                     const newStone = new Stone();
                     let currentTarget = "player"+player+"Pocket"+pocket;
@@ -221,10 +221,26 @@ const game = {
     passivePlayer: playerTwo,
     start() {
         console.log('game started');
-        stoneFactory.makeStones();
+        let startingStones = 4;
+        const startingStones3 = document.getElementById('three').checked;
+        const startingStones4 = document.getElementById('four').checked;
+        const startingStones5 = document.getElementById('five').checked;
+        const startingStones6 = document.getElementById('six').checked;
+        if (startingStones3) {
+            startingStones = document.getElementById('three').value;
+        } else if (startingStones4) {
+            startingStones = document.getElementById('four').value;
+        } else if (startingStones5) {
+            startingStones = document.getElementById('five').value;
+        } else if (startingStones6) {
+            startingStones = document.getElementById('six').value;
+        }
+        //console.log(startingStones);
+        stoneFactory.makeStones(startingStones);
         $('.player1-pockets').on('click', generateSequence);
         $('#player1-turn').text("Player 1: It's Your Turn!");
         $('#game-start').addClass('hidden');
+        $('#startStones-selector').addClass('hidden');
         $('.player-score-area').removeClass('hidden');
     },
     scoreboard() {
